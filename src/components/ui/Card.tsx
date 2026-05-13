@@ -21,7 +21,7 @@ export function Card({ children, className = '', variant = 'default', interactiv
     return (
       <motion.div
         className={`${baseClasses} ${className}`}
-        whileHover={{ y: -4, shadow: '0 12px 32px rgba(45, 37, 64, 0.12)' }}
+        whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(45, 37, 64, 0.12)' }}
         transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
       >
         {children}

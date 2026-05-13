@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode } from 'react'
+import { type ReactNode } from 'react'
 import { useLocation } from 'react-router'
 import { motion, AnimatePresence } from 'framer-motion'
 

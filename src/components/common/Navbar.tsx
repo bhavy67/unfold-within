@@ -69,22 +69,27 @@ export function Navbar() {
           </ul>
 
           <div className="flex items-center gap-4">
-            <button
-              onClick={() => setUserMenuOpen(!userMenuOpen)}
-              className="flex items-center gap-2 text-sm text-[#5C5675] hover:text-[#2D2540] transition-colors"
-            >
-              <CartIcon />
+            <CartIcon />
 
-              {isAuthenticated ? (
+            {isAuthenticated ? (
+              <button
+                onClick={() => setUserMenuOpen(!userMenuOpen)}
+                className="flex items-center gap-2 text-sm text-[#5C5675] hover:text-[#2D2540] transition-colors"
+              >
                 <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-[#E8D8E8] to-[#D4CBF0]">
                   <span className="text-xs font-semibold text-[#5C4CA8]">
                     {user?.name?.charAt(0).toUpperCase()}
                   </span>
                 </div>
-              ) : (
-                <span className="font-medium text-[#5C4CA8]">Sign in</span>
-              )}
-            </button>
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="text-sm font-medium text-[#5C4CA8] hover:text-[#7D6BC0] transition-colors"
+              >
+                Sign in
+              </Link>
+            )}
 
             <AnimatePresence>
               {userMenuOpen && isAuthenticated && (

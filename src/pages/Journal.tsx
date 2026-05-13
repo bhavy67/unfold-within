@@ -4,7 +4,7 @@ import { PageContainer, Section, PageHeader } from '@/components/layout'
 import { ArticleCard, FeaturedArticle } from '@/components/journal'
 import { SearchBar, FilterBar, EmptyState } from '@/components/ui'
 import { FadeIn, StaggerChildren } from '@/components/ui/FadeIn'
-import { articles, getFeaturedArticle, type Article } from '@/data/articles'
+import { articles, getFeaturedArticle } from '@/data/articles'
 
 const categoryOptions = [
   { value: 'all', label: 'All' },

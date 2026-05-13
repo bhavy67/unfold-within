@@ -1,4 +1,4 @@
-import { PageContainer, ContentWrapper } from '@/components/layout'
+import { PageContainer } from '@/components/layout'
 import { FadeIn } from '@/components/ui/FadeIn'
 
 export function BrandIntro() {

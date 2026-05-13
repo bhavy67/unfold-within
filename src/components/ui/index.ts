@@ -1,6 +1,7 @@
 export { Button } from './Button'
 export { Card } from './Card'
 export { Input } from './Input'
+export { Textarea } from './Textarea'
 export { SearchBar } from './SearchBar'
 export { FilterBar } from './FilterBar'
 export { EmptyState } from './EmptyState'

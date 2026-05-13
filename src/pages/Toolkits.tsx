@@ -4,7 +4,7 @@ import { PageContainer, Section, PageHeader } from '@/components/layout'
 import { ToolkitCard, ToolkitGrid } from '@/components/toolkit'
 import { SearchBar, FilterBar, EmptyState } from '@/components/ui'
 import { FadeIn } from '@/components/ui/FadeIn'
-import { toolkits, type Toolkit } from '@/data/toolkits'
+import { toolkits } from '@/data/toolkits'
 
 const categoryOptions = [
   { value: 'all', label: 'All' },

@@ -11,7 +11,6 @@ import { Contact } from '@/pages/Contact'
 import { Login } from '@/pages/Login'
 import { Signup } from '@/pages/Signup'
 import { ForgotPassword } from '@/pages/ForgotPassword'
-import { ProtectedRoute } from '@/components/auth'
 import { useAuthStore } from '@/store/auth'
 
 // Auth route wrapper for pages that don't need MainLayout
