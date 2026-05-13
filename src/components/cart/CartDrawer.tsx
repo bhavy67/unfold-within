@@ -98,7 +98,7 @@ export function CartDrawer() {
                               {item.toolkit.title}
                             </Link>
                             <p className="mt-1 text-sm text-brand-600">
-                              ${item.toolkit.price}
+                              ₹{item.toolkit.price}
                             </p>
                             <div className="mt-2 flex items-center gap-3">
                               <button

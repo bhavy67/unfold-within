@@ -45,7 +45,7 @@ export function ToolkitCard({ toolkit }: ToolkitCardProps) {
             <span className="text-sm text-brand-500">({toolkit.reviewCount})</span>
           </div>
           <span className="text-lg font-semibold text-brand-900">
-            ${toolkit.price}
+            ₹{toolkit.price}
           </span>
         </div>
       </Card>

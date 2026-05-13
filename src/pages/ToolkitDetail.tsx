@@ -129,7 +129,7 @@ export function ToolkitDetail() {
                 <div className="text-center">
                   <p className="text-sm text-brand-500">One-time purchase</p>
                   <p className="mt-2 text-4xl font-bold text-brand-900">
-                    ${toolkit.price}
+                    ₹{toolkit.price}
                   </p>
                   <p className="mt-1 text-sm text-brand-500">{toolkit.currency}</p>
                 </div>

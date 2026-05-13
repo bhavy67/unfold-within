@@ -1,9 +1,14 @@
-import { forwardRef, type ButtonHTMLAttributes } from 'react'
+import { forwardRef, type ReactNode, type MouseEventHandler } from 'react'
 import { motion } from 'framer-motion'
 
-interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onDrag' | 'onDragEnd' | 'onDragStart'> {
+interface ButtonProps {
+  children?: ReactNode
   variant?: 'primary' | 'secondary' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
+  className?: string
+  disabled?: boolean
+  type?: 'button' | 'submit' | 'reset'
+  onClick?: MouseEventHandler<HTMLButtonElement>
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(

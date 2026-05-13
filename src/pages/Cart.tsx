@@ -48,7 +48,7 @@ export function Cart() {
                           </Link>
                           <p className="mt-1 text-sm text-brand-600">{item.toolkit.subtitle}</p>
                           <p className="mt-2 text-base font-medium text-brand-900">
-                            ${item.toolkit.price}
+                            ₹{item.toolkit.price}
                           </p>
                           <div className="mt-4 flex items-center gap-4">
                             <div className="flex items-center gap-3">
@@ -76,7 +76,7 @@ export function Cart() {
                         </div>
                         <div className="text-right">
                           <p className="text-lg font-semibold text-brand-900">
-                            ${item.toolkit.price * item.quantity}
+                            ₹{item.toolkit.price * item.quantity}
                           </p>
                         </div>
                       </li>
