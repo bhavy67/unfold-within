@@ -79,38 +79,50 @@ export function Toolkits() {
 
         {/* Search and Filters */}
         <FadeIn delay={0.1}>
-          <div className="mt-8 space-y-4">
+          <div className="mt-6 sm:mt-8 space-y-4">
             <SearchBar
               placeholder="Search toolkits..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
 
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <FilterBar
-                label="Category:"
-                options={categoryOptions}
-                value={category}
-                onChange={setCategory}
-              />
+            {/* Category Filters */}
+            <div className="space-y-2">
+              <span className="text-xs font-medium text-brand-500 uppercase tracking-wide">Category</span>
+              <div className="flex flex-wrap gap-2">
+                {categoryOptions.map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() => setCategory(option.value)}
+                    className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                      category === option.value
+                        ? 'bg-gradient-to-r from-[#9B8AD0] to-[#B8A9E0] text-white shadow-soft'
+                        : 'bg-[#F2EDF8] text-[#5C5675] hover:bg-[#E8DFF5] hover:text-[#2D2540]'
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-brand-600">Sort by:</span>
-                <div className="flex gap-1">
-                  {sortOptions.map((option) => (
-                    <button
-                      key={option.value}
-                      onClick={() => setSortBy(option.value as SortOption)}
-                      className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
-                        sortBy === option.value
-                          ? 'bg-brand-700 text-white'
-                          : 'bg-brand-100 text-brand-600 hover:bg-brand-200'
-                      }`}
-                    >
-                      {option.label}
-                    </button>
-                  ))}
-                </div>
+            {/* Sort Options */}
+            <div className="space-y-2">
+              <span className="text-xs font-medium text-brand-500 uppercase tracking-wide">Sort by</span>
+              <div className="flex flex-wrap gap-2">
+                {sortOptions.map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() => setSortBy(option.value as SortOption)}
+                    className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                      sortBy === option.value
+                        ? 'bg-gradient-to-r from-[#9B8AD0] to-[#B8A9E0] text-white shadow-soft'
+                        : 'bg-[#F2EDF8] text-[#5C5675] hover:bg-[#E8DFF5] hover:text-[#2D2540]'
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
               </div>
             </div>
           </div>
@@ -118,7 +130,7 @@ export function Toolkits() {
 
         {/* Results count */}
         <FadeIn delay={0.2}>
-          <p className="mt-6 text-sm text-brand-500">
+          <p className="mt-4 sm:mt-6 text-sm text-brand-500">
             {filteredToolkits.length} {filteredToolkits.length === 1 ? 'toolkit' : 'toolkits'} found
           </p>
         </FadeIn>

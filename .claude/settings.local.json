@@ -26,7 +26,8 @@
       "Bash(grep -r \"₹\\\\|rupee\\\\|INR\\\\|\\\\$\\\\|price\\\\|Price\\\\|cost\" /Users/bhavy67/Projects/React/unfold_within/src/ --include=\"*.tsx\" --include=\"*.ts\")",
       "Bash(grep -i \"price\\\\|\\\\$\\\\|rupee\\\\|cost\")",
       "Bash(grep -rn \"\\\\$\\\\|currency\\\\|₹\" /Users/bhavy67/Projects/React/unfold_within/src/ --include=\"*.tsx\" --include=\"*.ts\")",
-      "Bash(grep *)"
+      "Bash(grep *)",
+      "Bash(npm list *)"
     ]
   }
 }

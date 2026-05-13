@@ -14,6 +14,7 @@ export interface Toolkit {
   duration: string
   level: 'beginner' | 'intermediate' | 'advanced'
   image: string
+  images: string[]
   rating: number
   reviewCount: number
 }
@@ -48,6 +49,11 @@ export const toolkits: Toolkit[] = [
     duration: '4 weeks',
     level: 'beginner',
     image: 'anxiety-toolkit',
+    images: [
+      'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=600&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600&h=400&fit=crop',
+    ],
     rating: 4.8,
     reviewCount: 127,
   },
@@ -80,6 +86,11 @@ export const toolkits: Toolkit[] = [
     duration: '30 days',
     level: 'intermediate',
     image: 'overthinking-toolkit',
+    images: [
+      'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1474418397713-7ede21d49118?w=600&h=400&fit=crop',
+    ],
     rating: 4.7,
     reviewCount: 89,
   },
@@ -112,6 +123,11 @@ export const toolkits: Toolkit[] = [
     duration: '3 weeks',
     level: 'beginner',
     image: 'sleep-toolkit',
+    images: [
+      'https://images.unsplash.com/photo-1511295742362-92c96b1cf484?w=600&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1515894203078-9f7c3315a593?w=600&h=400&fit=crop',
+    ],
     rating: 4.9,
     reviewCount: 203,
   },
@@ -144,6 +160,11 @@ export const toolkits: Toolkit[] = [
     duration: '2 weeks',
     level: 'beginner',
     image: 'mindful-toolkit',
+    images: [
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=600&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600&h=400&fit=crop',
+    ],
     rating: 4.6,
     reviewCount: 156,
   },
