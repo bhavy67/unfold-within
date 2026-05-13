@@ -3,40 +3,48 @@ import { FadeIn } from '@/components/ui/FadeIn'
 
 export function BrandIntro() {
   return (
-    <section className="relative overflow-hidden py-14 bg-[#F7F3FA] md:py-18 lg:py-22">
-      {/* Dreamy glow */}
+    <section className="relative overflow-hidden py-16 bg-[#F7F3FA] md:py-22 lg:py-26">
+      {/* Atmospheric layers */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(ellipse_70%_60%_at_70%_0%,_rgba(200,208,240,0.15)_0%,_transparent_60%)]" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[radial-gradient(ellipse_60%_50%_at_20%_100%,_rgba(232,200,208,0.1)_0%,_transparent_50%)]" />
+        <div className="absolute top-0 right-[10%] w-[600px] h-[600px] bg-[radial-gradient(ellipse_60%_50%_at_70%_20%,_rgba(200,208,240,0.12)_0%,_transparent_50%)]" />
+        <div className="absolute bottom-0 left-[5%] w-[400px] h-[400px] bg-[radial-gradient(ellipse_50%_40%_at_30%_100%,_rgba(232,200,208,0.08)_0%,_transparent_50%)]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[radial-gradient(ellipse_50%_30%_at_50%_50%,_rgba(184,169,224,0.06)_0%,_transparent_50%)]" />
       </div>
 
       <PageContainer>
-        <ContentWrapper>
-          <div className="grid gap-10 md:grid-cols-2 md:gap-14">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          {/* Heading - editorial placement */}
+          <div className="lg:col-span-5">
             <FadeIn>
-              <div>
-                <h2 className="text-2xl font-semibold tracking-tight text-[#2D2540] md:text-3xl">
-                  A space for your mind
-                </h2>
-                <p className="mt-5 text-[#5C5675] leading-relaxed">
-                  Unfold Within is a mental wellness brand dedicated to helping you
-                  navigate the complexities of emotional health. We believe in the power
-                  of self-discovery and practical tools for lasting change.
-                </p>
-              </div>
+              <h2 className="text-3xl font-semibold tracking-tight text-[#2D2540] md:text-4xl lg:text-5xl leading-tight">
+                A gentle space for your mind to rest
+              </h2>
             </FadeIn>
+          </div>
 
-            <FadeIn delay={0.1}>
-              <div className="md:pt-2">
-                <p className="text-[#5C5675] leading-relaxed">
-                  Whether you're dealing with anxiety, overthinking, or simply seeking
-                  a clearer path forward, we're here to support your journey with
-                  evidence-based approaches and compassionate guidance.
+          {/* Content - more editorial layout */}
+          <div className="lg:col-span-7 lg:pl-8">
+            <FadeIn delay={0.15}>
+              <div className="space-y-6">
+                <p className="text-lg text-[#5C5675] leading-relaxed">
+                  Unfold Within is a sanctuary for your emotional wellbeing.
+                  We believe healing doesn't have to be complicated—just
+                  intentional, compassionate, and human.
                 </p>
+                <p className="text-lg text-[#5C5675] leading-relaxed">
+                  Whether anxiety keeps you up at night, or overthinking
+                  clouds your days, we're here with tools that feel like
+                  a warm hug for your mind.
+                </p>
+                <div className="pt-2">
+                  <p className="text-[#7D6BC0] font-medium">
+                    — Because you deserve to feel okay.
+                  </p>
+                </div>
               </div>
             </FadeIn>
           </div>
-        </ContentWrapper>
+        </div>
       </PageContainer>
     </section>
   )
