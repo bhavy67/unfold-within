@@ -23,7 +23,6 @@ export function Navbar() {
   const user = useAuthStore((state) => state.user)
   const logout = useAuthStore((state) => state.logout)
 
-  // Close user menu on outside click
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
@@ -41,36 +40,29 @@ export function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-brand-50/80 backdrop-blur-lg border-b border-brand-200/50">
+    <header className="sticky top-0 z-50 bg-[#FBFAFC]/85 backdrop-blur-lg border-b border-[#F2EDF8]">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           to="/"
-          className="text-xl font-semibold tracking-tight text-brand-900 transition-all duration-200 hover:opacity-80 active:scale-[0.98]"
+          className="text-lg font-semibold tracking-tight text-[#2D2540] hover:opacity-70"
         >
           Unfold Within
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex md:items-center md:gap-9">
-          <ul className="flex gap-9">
+        <div className="hidden md:flex md:items-center md:gap-8">
+          <ul className="flex gap-8">
             {navLinks.map((link) => (
               <li key={link.path}>
                 <Link
                   to={link.path}
-                  className={`relative text-sm transition-all duration-200 ${
+                  className={`text-sm font-medium transition-colors duration-200 ${
                     location.pathname === link.path
-                      ? 'font-medium text-brand-900'
-                      : 'text-brand-600 hover:text-brand-900'
+                      ? 'text-[#7D6BC0]'
+                      : 'text-[#8B8399] hover:text-[#5C4CA8]'
                   }`}
                 >
                   {link.label}
-                  {location.pathname === link.path && (
-                    <motion.div
-                      layoutId="navbar-indicator"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand-700 rounded-full"
-                      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                    />
-                  )}
                 </Link>
               </li>
             ))}
@@ -79,18 +71,18 @@ export function Navbar() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setUserMenuOpen(!userMenuOpen)}
-              className="flex items-center gap-2 text-sm text-brand-700 hover:text-brand-900 transition-colors"
+              className="flex items-center gap-2 text-sm text-[#5C5675] hover:text-[#2D2540] transition-colors"
             >
               <CartIcon />
 
               {isAuthenticated ? (
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-200 transition-transform hover:scale-105">
-                  <span className="text-sm font-medium text-brand-700">
+                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-[#E8D8E8] to-[#D4CBF0]">
+                  <span className="text-xs font-semibold text-[#5C4CA8]">
                     {user?.name?.charAt(0).toUpperCase()}
                   </span>
                 </div>
               ) : (
-                <span className="font-medium">Sign in</span>
+                <span className="font-medium text-[#5C4CA8]">Sign in</span>
               )}
             </button>
 
@@ -98,19 +90,19 @@ export function Navbar() {
               {userMenuOpen && isAuthenticated && (
                 <motion.div
                   ref={userMenuRef}
-                  initial={{ opacity: 0, y: -10 }}
+                  initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
+                  exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute right-8 top-20 mt-2 w-48 rounded-2xl bg-white shadow-medium border border-brand-100 py-2"
+                  className="absolute right-8 top-14 mt-2 w-44 rounded-2xl bg-white shadow-medium border border-[#F2EDF8] py-1.5"
                 >
-                  <div className="px-4 py-2 border-b border-brand-100">
-                    <p className="text-sm font-medium text-brand-900">{user?.name}</p>
-                    <p className="text-xs text-brand-500 truncate">{user?.email}</p>
+                  <div className="px-3 py-2 border-b border-[#F2EDF8]">
+                    <p className="text-sm font-medium text-[#2D2540]">{user?.name}</p>
+                    <p className="text-xs text-[#8B8399] truncate">{user?.email}</p>
                   </div>
                   <button
                     onClick={handleLogout}
-                    className="w-full px-4 py-2 text-left text-sm text-brand-600 hover:bg-brand-50 transition-colors"
+                    className="w-full px-3 py-2 text-left text-sm text-[#5C5675] hover:bg-[#F7F3FA] transition-colors"
                   >
                     Sign out
                   </button>
@@ -120,21 +112,19 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile: menu + cart */}
+        {/* Mobile */}
         <div className="flex items-center gap-3 md:hidden">
           <CartIcon />
-
           {isAuthenticated && (
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-200">
-              <span className="text-sm font-medium text-brand-700">
+            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-[#E8D8E8] to-[#D4CBF0]">
+              <span className="text-xs font-semibold text-[#5C4CA8]">
                 {user?.name?.charAt(0).toUpperCase()}
               </span>
             </div>
           )}
-
           <button
             type="button"
-            className="p-2 text-brand-700 transition-colors hover:text-brand-900 active:scale-95"
+            className="p-2 text-[#5C5675]"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -157,7 +147,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-            className="md:hidden overflow-hidden border-t border-brand-200/50 bg-brand-50"
+            className="md:hidden overflow-hidden border-t border-[#F2EDF8] bg-[#FBFAFC]"
           >
             <ul className="space-y-1 px-4 py-3">
               {navLinks.map((link) => (
@@ -169,10 +159,10 @@ export function Navbar() {
                 >
                   <Link
                     to={link.path}
-                    className={`block py-2.5 text-base transition-colors duration-200 ${
+                    className={`block py-2.5 text-sm font-medium ${
                       location.pathname === link.path
-                        ? 'font-medium text-brand-900'
-                        : 'text-brand-600 hover:text-brand-900'
+                        ? 'text-[#7D6BC0]'
+                        : 'text-[#8B8399]'
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -180,7 +170,6 @@ export function Navbar() {
                   </Link>
                 </motion.li>
               ))}
-
               {isAuthenticated && (
                 <motion.li
                   initial={{ opacity: 0, x: -10 }}
@@ -192,7 +181,7 @@ export function Navbar() {
                       handleLogout()
                       setMobileMenuOpen(false)
                     }}
-                    className="block py-2.5 text-base text-brand-600"
+                    className="block py-2.5 text-sm text-[#8B8399]"
                   >
                     Sign out
                   </button>

@@ -9,25 +9,25 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className="mt-auto border-t border-brand-200/50 bg-brand-100/50">
+    <footer className="mt-auto border-t border-[#F2EDF8] bg-[#F7F3FA]">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
-          <div className="flex flex-col items-center gap-2.5 md:items-start">
-            <Link to="/" className="text-lg font-semibold text-brand-900">
+        <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
+          <div className="flex flex-col items-center gap-2 md:items-start">
+            <Link to="/" className="text-base font-semibold text-[#2D2540]">
               Unfold Within
             </Link>
-            <p className="text-sm text-brand-600 max-w-xs text-center md:text-left leading-relaxed">
+            <p className="text-sm text-[#8B8399]">
               Your journey to emotional wellness starts here.
             </p>
           </div>
 
           <nav>
-            <ul className="flex flex-wrap justify-center gap-7">
+            <ul className="flex flex-wrap justify-center gap-6">
               {footerLinks.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-sm text-brand-600 hover:text-brand-900 transition-colors duration-200"
+                    className="text-sm text-[#8B8399] hover:text-[#7D6BC0] transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -37,8 +37,8 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-10 border-t border-brand-200/50 pt-8">
-          <p className="text-center text-sm text-brand-500">
+        <div className="mt-8 border-t border-[#F2EDF8] pt-8">
+          <p className="text-center text-xs text-[#B8A9C0]">
             &copy; 2026 Unfold Within. All rights reserved.
           </p>
         </div>

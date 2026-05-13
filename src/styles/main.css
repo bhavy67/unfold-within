@@ -1,69 +1,149 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'DM Sans', system-ui, sans-serif;
-  --font-display: 'DM Sans', system-ui, sans-serif;
+  /* Playful modern typography */
+  --font-sans: 'Sora', system-ui, sans-serif;
+  --font-display: 'Sora', system-ui, sans-serif;
 
-  --color-brand-50: #F9F8F6;
-  --color-brand-100: #F2EDE5;
-  --color-brand-200: #E5DCD0;
-  --color-brand-300: #D4C4B0;
-  --color-brand-400: #BEAA8C;
-  --color-brand-500: #A88F70;
-  --color-brand-600: #947858;
-  --color-brand-700: #7A6147;
-  --color-brand-800: #634D3C;
-  --color-brand-900: #503F33;
+  /* Dreamy pastel backgrounds */
+  --color-bg-primary: #FBFAFC;
+  --color-bg-secondary: #F7F3FA;
+  --color-bg-tertiary: #F2EDF8;
+  --color-bg-soft: #FDFCFE;
 
-  --color-accent-50: #F7F5FA;
-  --color-accent-100: #EDE9F3;
-  --color-accent-200: #D9D1E6;
-  --color-accent-300: #BCB2D3;
-  --color-accent-400: #9B8DBA;
-  --color-accent-500: #7E6DA4;
-  --color-accent-600: #685691;
-  --color-accent-700: #544379;
-  --color-accent-800: #443863;
-  --color-accent-900: #373152;
+  /* Rich but soft text */
+  --color-text-primary: #2D2540;
+  --color-text-secondary: #5C5675;
+  --color-text-muted: #8B8399;
 
-  --color-surface-50: #FAFAFA;
-  --color-surface-100: #F5F5F0;
-  --color-surface-200: #EBE9E0;
-  --color-surface-300: #DDDAD0;
-  --color-surface-400: #CBC7BA;
-  --color-surface-500: #B8B3A3;
+  /* Dreamy pastel accents */
+  --color-lavender: #B8A9E0;
+  --color-lavender-light: #D4CBF0;
+  --color-rose-pink: #E8C8D0;
+  --color-rose-soft: #F2D8E0;
+  --color-peach: #F0D8C8;
+  --color-periwinkle: #C8D0F0;
+  --color-blush: #E8D0D8;
+  --color-mauve: #B8A0C0;
 
-  --font-size-display-sm: 2.5rem;
-  --font-size-display-md: 3rem;
-  --font-size-display-lg: 3.5rem;
-  --font-size-display-xl: 4rem;
+  /* Brand colors - pastel-forward */
+  --color-brand-50: #FDFCFE;
+  --color-brand-100: #F7F3FA;
+  --color-brand-200: #F2EDF8;
+  --color-brand-300: #E6DFF0;
+  --color-brand-400: #D4CBF0;
+  --color-brand-500: #B8A9E0;
+  --color-brand-600: #9B8AD0;
+  --color-brand-700: #7D6BC0;
+  --color-brand-800: #5C4CA8;
+  --color-brand-900: #2D2540;
 
-  --radius-2xl: 1rem;
-  --radius-3xl: 1.5rem;
+  /* Warm accent palette */
+  --color-accent-50: #FDFCFE;
+  --color-accent-100: #F7F3FA;
+  --color-accent-200: #F2EDF8;
+  --color-accent-300: #E8D8E8;
+  --color-accent-400: #D4C0D8;
+  --color-accent-500: #C8B0D0;
+  --color-accent-600: #B8A0C0;
+  --color-accent-700: #A090B0;
+  --color-accent-800: #8878A0;
 
-  --shadow-soft: 0 2px 20px rgba(0, 0, 0, 0.04);
-  --shadow-medium: 0 4px 30px rgba(0, 0, 0, 0.06);
-  --shadow-large: 0 8px 40px rgba(0, 0, 0, 0.08);
+  /* Surface colors */
+  --color-surface-50: #FFFFFF;
+  --color-surface-100: #FBFAFC;
+  --color-surface-200: #F7F3FA;
+  --color-surface-300: #F2EDF8;
+
+  /* Dreamy soft shadows */
+  --shadow-soft: 0 2px 16px rgba(45, 37, 64, 0.06);
+  --shadow-medium: 0 4px 24px rgba(45, 37, 64, 0.08);
+  --shadow-large: 0 8px 40px rgba(45, 37, 64, 0.12);
+  --shadow-glow-lavender: 0 0 40px rgba(184, 169, 224, 0.25);
+  --shadow-glow-rose: 0 0 40px rgba(232, 200, 208, 0.25);
+  --shadow-glow-peach: 0 0 40px rgba(240, 216, 200, 0.2);
+
+  /* Rounded - soft but modern */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
 }
 
 @layer base {
   html {
-    font-family: 'DM Sans', system-ui, sans-serif;
+    font-family: 'Sora', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    background-color: var(--color-brand-50);
-    color: var(--color-brand-900);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    line-height: 1.65;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--color-text-primary);
   }
 
   p {
-    line-height: 1.7;
+    line-height: 1.75;
+    color: var(--color-text-secondary);
   }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-400);
+    outline-offset: 2px;
+  }
+}
+
+/* Smooth transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Gradient text utilities */
+.text-gradient-lavender {
+  background: linear-gradient(135deg, #B8A9E0 0%, #D4CBF0 50%, #E8C8D0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-dreamy {
+  background: linear-gradient(135deg, #B8A9E0 0%, #E8C8D0 50%, #F0D8C8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-rose {
+  background: linear-gradient(135deg, #E8C8D0 0%, #F2D8E0 50%, #D4CBF0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Atmospheric glows */
+.glow-lavender {
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184, 169, 224, 0.2) 0%, transparent 70%);
+}
+
+.glow-rose {
+  background: radial-gradient(ellipse 60% 50% at 80% 100%, rgba(232, 200, 208, 0.15) 0%, transparent 60%);
+}
+
+.glow-peach {
+  background: radial-gradient(ellipse 50% 40% at 20% 60%, rgba(240, 216, 200, 0.12) 0%, transparent 50%);
+}
+
+.glow-periwinkle {
+  background: radial-gradient(ellipse 70% 50% at 30% 20%, rgba(200, 208, 240, 0.15) 0%, transparent 50%);
 }

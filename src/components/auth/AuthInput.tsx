@@ -10,14 +10,14 @@ export const AuthInput = forwardRef<HTMLInputElement, AuthInputProps>(
   ({ label, error, className = '', ...props }, ref) => {
     return (
       <div className="w-full">
-        <label className="block text-sm font-medium text-brand-900 mb-1.5">
+        <label className="block text-sm font-medium text-[#1A1A1A] mb-1.5">
           {label}
         </label>
         <input
           ref={ref}
-          className={`w-full px-4 py-3 rounded-2xl border ${
-            error ? 'border-red-500' : 'border-brand-200'
-          } bg-white text-brand-900 placeholder:text-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all duration-200 ${className}`}
+          className={`w-full px-4 py-3 rounded-xl border ${
+            error ? 'border-red-500' : 'border-[#E8E6E1]'
+          } bg-white text-[#1A1A1A] placeholder:text-[#B5B2AB] focus:outline-none focus:ring-2 focus:ring-[#1A1A1A] focus:border-transparent transition-all duration-200 ${className}`}
           {...props}
         />
         <AnimatePresence>

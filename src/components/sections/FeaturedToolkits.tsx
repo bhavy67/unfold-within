@@ -26,11 +26,11 @@ export function FeaturedToolkits() {
     <Section>
       <PageContainer>
         <FadeIn>
-          <div className="mb-10 md:mb-14">
-            <h2 className="text-2xl font-semibold tracking-tight text-brand-900 md:text-3xl">
+          <div className="mb-8 md:mb-12">
+            <h2 className="text-2xl font-semibold tracking-tight text-[#1A1A1A] md:text-3xl">
               Featured Toolkits
             </h2>
-            <p className="mt-2.5 text-brand-600">Practical tools for your wellness journey</p>
+            <p className="mt-2 text-[#4A4A4A]">Practical tools for your wellness journey</p>
           </div>
         </FadeIn>
 
@@ -38,13 +38,10 @@ export function FeaturedToolkits() {
           <Grid cols={3}>
             {toolkits.map((toolkit) => (
               <Link key={toolkit.id} to="/toolkits" className="block">
-                <Card
-                  variant="elevated"
-                  className="h-full transition-all duration-300 hover:shadow-medium hover:-translate-y-1"
-                >
-                  <h3 className="text-lg font-semibold text-brand-900">{toolkit.title}</h3>
-                  <p className="mt-2.5 text-brand-600 leading-relaxed">{toolkit.description}</p>
-                  <span className="mt-5 inline-block text-sm font-medium text-brand-700 group-hover:text-brand-900 transition-colors">
+                <Card variant="elevated" interactive className="h-full">
+                  <h3 className="text-base font-semibold text-[#1A1A1A]">{toolkit.title}</h3>
+                  <p className="mt-2 text-[#4A4A4A]">{toolkit.description}</p>
+                  <span className="mt-4 inline-block text-sm font-medium text-[#8B7355]">
                     Explore
                   </span>
                 </Card>
@@ -54,8 +51,8 @@ export function FeaturedToolkits() {
         </StaggerChildren>
 
         <FadeIn delay={0.3}>
-          <div className="mt-10 text-center md:mt-14">
-            <Link to="/toolkits" className="text-sm font-medium text-brand-700 hover:text-brand-900 transition-colors">
+          <div className="mt-8 text-center md:mt-12">
+            <Link to="/toolkits" className="text-sm font-medium text-[#1A1A1A] hover:underline">
               View all toolkits
             </Link>
           </div>
