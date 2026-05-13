@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react'
 import { Link } from 'react-router'
 import { PageContainer, Section, PageHeader } from '@/components/layout'
 import { ToolkitCard, ToolkitGrid } from '@/components/toolkit'
-import { SearchBar, FilterBar, EmptyState } from '@/components/ui'
+import { SearchBar, EmptyState } from '@/components/ui'
 import { FadeIn } from '@/components/ui/FadeIn'
 import { toolkits } from '@/data/toolkits'
 
