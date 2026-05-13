@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create *)",
+      "Bash(yes \"\")",
+      "Read(//private/tmp/**)",
+      "Bash(rm -rf unfold_temp)",
+      "Bash(cp -r /tmp/unfold_temp/* /Users/bhavy67/Projects/React/unfold_within/)",
+      "Bash(cp /tmp/unfold_temp/.gitignore /Users/bhavy67/Projects/React/unfold_within/)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(pkill -f \"vite\")",
+      "Bash(curl -s http://localhost:5174)",
+      "Bash(npx tsc *)",
+      "Bash(npm ls *)"
+    ]
+  }
+}
