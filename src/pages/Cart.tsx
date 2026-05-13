@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 import { PageContainer, Section, ContentWrapper } from '@/components/layout'
-import { Button } from '@/components/ui'
+import { Button, EmptyState } from '@/components/ui'
 import { FadeIn } from '@/components/ui/FadeIn'
 import { useCartStore } from '@/store/cart'
 
@@ -18,16 +18,20 @@ export function Cart() {
             </h1>
 
             {items.length === 0 ? (
-              <div className="mt-12 flex flex-col items-center justify-center py-20">
-                <svg className="h-20 w-20 text-brand-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                </svg>
-                <p className="mt-6 text-lg text-brand-600">Your cart is empty</p>
-                <p className="mt-2 text-brand-500">Explore our toolkits to find what you need</p>
-                <Link to="/toolkits" className="mt-8">
-                  <Button size="lg">Browse Toolkits</Button>
-                </Link>
-              </div>
+              <EmptyState
+                icon={
+                  <svg className="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                }
+                title="Your cart is empty"
+                description="Explore our toolkits to find what you need"
+                action={
+                  <Link to="/toolkits">
+                    <Button size="lg">Browse Toolkits</Button>
+                  </Link>
+                }
+              />
             ) : (
               <div className="mt-8 grid gap-10 lg:grid-cols-3">
                 {/* Cart Items */}
@@ -50,21 +54,21 @@ export function Cart() {
                             <div className="flex items-center gap-3">
                               <button
                                 onClick={() => updateQuantity(item.toolkit.id, item.quantity - 1)}
-                                className="flex h-8 w-8 items-center justify-center rounded-full border border-brand-200 text-brand-600 hover:bg-brand-50"
+                                className="flex h-8 w-8 items-center justify-center rounded-full border border-brand-200 text-brand-600 hover:bg-brand-50 transition-colors"
                               >
                                 -
                               </button>
                               <span className="text-base text-brand-900 w-8 text-center">{item.quantity}</span>
                               <button
                                 onClick={() => updateQuantity(item.toolkit.id, item.quantity + 1)}
-                                className="flex h-8 w-8 items-center justify-center rounded-full border border-brand-200 text-brand-600 hover:bg-brand-50"
+                                className="flex h-8 w-8 items-center justify-center rounded-full border border-brand-200 text-brand-600 hover:bg-brand-50 transition-colors"
                               >
                                 +
                               </button>
                             </div>
                             <button
                               onClick={() => removeItem(item.toolkit.id)}
-                              className="text-sm text-brand-500 hover:text-brand-700"
+                              className="text-sm text-brand-500 hover:text-brand-700 transition-colors"
                             >
                               Remove
                             </button>
@@ -105,13 +109,13 @@ export function Cart() {
                     </Button>
                     <button
                       onClick={clearCart}
-                      className="mt-4 w-full text-sm text-brand-500 hover:text-brand-700"
+                      className="mt-4 w-full text-sm text-brand-500 hover:text-brand-700 transition-colors"
                     >
                       Clear Cart
                     </button>
                     <Link
                       to="/toolkits"
-                      className="mt-4 block text-center text-sm text-brand-600 hover:text-brand-900"
+                      className="mt-4 block text-center text-sm text-brand-600 hover:text-brand-900 transition-colors"
                     >
                       Continue Shopping
                     </Link>
