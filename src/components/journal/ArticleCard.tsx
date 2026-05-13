@@ -1,4 +1,5 @@
 import { Link } from 'react-router'
+import { motion } from 'framer-motion'
 import type { Article } from '@/data/articles'
 
 interface ArticleCardProps {
@@ -16,14 +17,18 @@ const categoryColors: Record<string, string> = {
 export function ArticleCard({ article }: ArticleCardProps) {
   return (
     <Link to={`/journal/${article.slug}`} className="group block">
-      <article className="flex flex-col">
+      <motion.article
+        className="flex flex-col p-6 rounded-3xl bg-white border border-transparent hover:border-brand-200 transition-colors duration-200"
+        whileHover={{ y: -2 }}
+        transition={{ duration: 0.2 }}
+      >
         <div className="mb-4">
           <span className={`inline-block text-xs font-medium px-2.5 py-1 rounded-full ${categoryColors[article.category]}`}>
             {article.category}
           </span>
         </div>
 
-        <h3 className="text-lg font-semibold text-brand-900 group-hover:text-brand-700 transition-colors">
+        <h3 className="text-lg font-semibold text-brand-900 group-hover:text-brand-700 transition-colors duration-200">
           {article.title}
         </h3>
         <p className="mt-1.5 text-sm text-brand-600">{article.subtitle}</p>
@@ -41,7 +46,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
             <span className="text-xs text-brand-500">{article.readTime}</span>
           </div>
         </div>
-      </article>
+      </motion.article>
     </Link>
   )
 }

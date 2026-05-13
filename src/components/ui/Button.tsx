@@ -1,4 +1,5 @@
 import { forwardRef, type ButtonHTMLAttributes } from 'react'
+import { motion } from 'framer-motion'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'ghost'
@@ -7,12 +8,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = 'primary', size = 'md', className = '', children, ...props }, ref) => {
-    const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-offset-2'
+    const baseStyles = 'inline-flex items-center justify-center font-medium rounded-2xl focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-[0.98]'
 
     const variants = {
-      primary: 'bg-brand-700 text-white hover:bg-brand-800 focus:ring-brand-500',
-      secondary: 'border border-brand-300 text-brand-700 hover:bg-brand-50 focus:ring-brand-500',
-      ghost: 'text-brand-700 hover:bg-brand-50 focus:ring-brand-500',
+      primary: 'bg-brand-700 text-white hover:bg-brand-800 focus:ring-brand-500 active:bg-brand-900',
+      secondary: 'border border-brand-300 text-brand-700 hover:bg-brand-50 focus:ring-brand-500 active:bg-brand-100',
+      ghost: 'text-brand-700 hover:bg-brand-50 focus:ring-brand-500 active:bg-brand-100',
     }
 
     const sizes = {
@@ -22,13 +23,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     }
 
     return (
-      <button
+      <motion.button
         ref={ref}
+        whileTap={{ scale: 0.98 }}
         className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
+        transition={{ duration: 0.15 }}
         {...props}
       >
         {children}
-      </button>
+      </motion.button>
     )
   }
 )

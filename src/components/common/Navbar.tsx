@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CartIcon } from '@/components/cart'
@@ -17,10 +17,22 @@ export function Navbar() {
   const navigate = useNavigate()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
+  const userMenuRef = useRef<HTMLDivElement>(null)
 
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated)
   const user = useAuthStore((state) => state.user)
   const logout = useAuthStore((state) => state.logout)
+
+  // Close user menu on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
+        setUserMenuOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   const handleLogout = () => {
     logout()
@@ -33,7 +45,7 @@ export function Navbar() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           to="/"
-          className="text-xl font-semibold tracking-tight text-brand-900 transition-opacity hover:opacity-80"
+          className="text-xl font-semibold tracking-tight text-brand-900 transition-all duration-200 hover:opacity-80 active:scale-[0.98]"
         >
           Unfold Within
         </Link>
@@ -45,7 +57,7 @@ export function Navbar() {
               <li key={link.path}>
                 <Link
                   to={link.path}
-                  className={`relative text-sm transition-colors duration-200 ${
+                  className={`relative text-sm transition-all duration-200 ${
                     location.pathname === link.path
                       ? 'font-medium text-brand-900'
                       : 'text-brand-600 hover:text-brand-900'
@@ -65,76 +77,64 @@ export function Navbar() {
           </ul>
 
           <div className="flex items-center gap-4">
-            <CartIcon />
+            <button
+              onClick={() => setUserMenuOpen(!userMenuOpen)}
+              className="flex items-center gap-2 text-sm text-brand-700 hover:text-brand-900 transition-colors"
+            >
+              <CartIcon />
 
-            {isAuthenticated ? (
-              <div className="relative">
-                <button
-                  onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center gap-2 text-sm text-brand-700 hover:text-brand-900 transition-colors"
+              {isAuthenticated ? (
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-200 transition-transform hover:scale-105">
+                  <span className="text-sm font-medium text-brand-700">
+                    {user?.name?.charAt(0).toUpperCase()}
+                  </span>
+                </div>
+              ) : (
+                <span className="font-medium">Sign in</span>
+              )}
+            </button>
+
+            <AnimatePresence>
+              {userMenuOpen && isAuthenticated && (
+                <motion.div
+                  ref={userMenuRef}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute right-8 top-20 mt-2 w-48 rounded-2xl bg-white shadow-medium border border-brand-100 py-2"
                 >
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-200">
-                    <span className="text-sm font-medium text-brand-700">
-                      {user?.name?.charAt(0).toUpperCase()}
-                    </span>
+                  <div className="px-4 py-2 border-b border-brand-100">
+                    <p className="text-sm font-medium text-brand-900">{user?.name}</p>
+                    <p className="text-xs text-brand-500 truncate">{user?.email}</p>
                   </div>
-                </button>
-
-                <AnimatePresence>
-                  {userMenuOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="absolute right-0 mt-2 w-48 rounded-2xl bg-white shadow-medium border border-brand-100 py-2"
-                    >
-                      <div className="px-4 py-2 border-b border-brand-100">
-                        <p className="text-sm font-medium text-brand-900">{user?.name}</p>
-                        <p className="text-xs text-brand-500">{user?.email}</p>
-                      </div>
-                      <button
-                        onClick={handleLogout}
-                        className="w-full px-4 py-2 text-left text-sm text-brand-600 hover:bg-brand-50 transition-colors"
-                      >
-                        Sign out
-                      </button>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ) : (
-              <Link
-                to="/login"
-                className="text-sm font-medium text-brand-700 hover:text-brand-900 transition-colors"
-              >
-                Sign in
-              </Link>
-            )}
+                  <button
+                    onClick={handleLogout}
+                    className="w-full px-4 py-2 text-left text-sm text-brand-600 hover:bg-brand-50 transition-colors"
+                  >
+                    Sign out
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
 
         {/* Mobile: menu + cart */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-3 md:hidden">
           <CartIcon />
 
-          {isAuthenticated ? (
+          {isAuthenticated && (
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-200">
               <span className="text-sm font-medium text-brand-700">
                 {user?.name?.charAt(0).toUpperCase()}
               </span>
             </div>
-          ) : (
-            <Link
-              to="/login"
-              className="text-sm font-medium text-brand-700"
-            >
-              Sign in
-            </Link>
           )}
 
           <button
             type="button"
-            className="p-2 text-brand-700 transition-colors hover:text-brand-900"
+            className="p-2 text-brand-700 transition-colors hover:text-brand-900 active:scale-95"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -156,12 +156,17 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
             className="md:hidden overflow-hidden border-t border-brand-200/50 bg-brand-50"
           >
             <ul className="space-y-1 px-4 py-3">
               {navLinks.map((link) => (
-                <li key={link.path}>
+                <motion.li
+                  key={link.path}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
                   <Link
                     to={link.path}
                     className={`block py-2.5 text-base transition-colors duration-200 ${
@@ -173,11 +178,15 @@ export function Navbar() {
                   >
                     {link.label}
                   </Link>
-                </li>
+                </motion.li>
               ))}
 
               {isAuthenticated && (
-                <li>
+                <motion.li
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
                   <button
                     onClick={() => {
                       handleLogout()
@@ -187,7 +196,7 @@ export function Navbar() {
                   >
                     Sign out
                   </button>
-                </li>
+                </motion.li>
               )}
             </ul>
           </motion.div>

@@ -22,10 +22,7 @@ const levelLabels: Record<string, string> = {
 export function ToolkitCard({ toolkit }: ToolkitCardProps) {
   return (
     <Link to={`/toolkits/${toolkit.slug}`} className="block">
-      <Card
-        variant="elevated"
-        className="h-full transition-all duration-300 hover:shadow-medium hover:-translate-y-1"
-      >
+      <Card variant="elevated" interactive className="h-full">
         <div className="flex items-center gap-2 mb-3">
           <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${categoryColors[toolkit.category]}`}>
             {toolkit.category}
